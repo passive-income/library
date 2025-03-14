@@ -26,10 +26,10 @@ export const usersTable = pgTable("users", {
   email: text("email").notNull().unique(),
   userId: integer("user_id").notNull().unique(),
   password: text("password").notNull(),
-  userCard: text("user_card").notNull().unique(),
+  userCard: text("user_card").notNull(),
   status: STATUS_ENUM("status").default("PENDING"),
   role: ROLE_ENUM("role").default("USER"),
-  lastActivityDate: date("last_activity_date"),
+  lastActivityDate: date("last_activity_date").defaultNow(),
   createdAt: timestamp("created_at", {
     withTimezone: true,
   }).defaultNow(),
